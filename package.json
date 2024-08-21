@@ -1,0 +1,20 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "npx playwright test",
+    "e2e:chrome": "npx playwright test --project=chromium",
+    "e2e:headed": "npx playwright test --headed",
+    "e2e:headed:chrome": "npx playwright test --headed --project=chromium"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^22.0.0"
+  }
+}
