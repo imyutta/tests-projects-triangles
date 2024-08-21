@@ -57,4 +57,4 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ## Contact
 
-For any questions or feedback, please reach out to [yutta.dyck@example.com]
+For any questions or feedback, please reach out to [yutta.dyck@gmail.com]
