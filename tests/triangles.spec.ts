@@ -25,6 +25,13 @@ test("page loads correctly", async ({ page }) => {
 });
 
 test.describe("Positive test cases", () => {
+  let trianglePage: TrianglePage;
+
+  test.beforeEach(async ({ page }) => {
+    const trianglePage = new TrianglePage(page);
+    await trianglePage.goto();
+  });
+
   const testCases = [
     {
       values: [5, 5, 8],
@@ -74,8 +81,7 @@ test.describe("Positive test cases", () => {
     },
   ];
   testCases.forEach(({ values, triangleType, description }) => {
-    test(description, async ({ page }) => {
-      const trianglePage = new TrianglePage(page);
+    test(description, async () => {
       const expectedResult = generateExpectedResult(triangleType, values);
       await trianglePage.inputSubmitCheck(values, expectedResult);
     });
@@ -83,6 +89,13 @@ test.describe("Positive test cases", () => {
 });
 
 test.describe("Negative test cases", () => {
+  let trianglePage: TrianglePage;
+
+  test.beforeEach(async ({ page }) => {
+    const trianglePage = new TrianglePage(page);
+    await trianglePage.goto();
+  });
+
   test.describe("Not a triangle", () => {
     const triandleTypeString = `Это НЕ треугольник.`;
     const testCases = [
@@ -169,8 +182,7 @@ test.describe("Negative test cases", () => {
     ];
 
     testCases.forEach(({ values, triangleType, description }) => {
-      test(description, async ({ page }) => {
-        const trianglePage = new TrianglePage(page);
+      test(description, async () => {
         const expectedResult = generateExpectedResult(triangleType, values);
         await trianglePage.inputSubmitCheck(values, expectedResult);
       });
@@ -198,8 +210,7 @@ test.describe("Negative test cases", () => {
     ];
 
     testCases.forEach(({ values, triangleType, description }) => {
-      test(description, async ({ page }) => {
-        const trianglePage = new TrianglePage(page);
+      test(description, async () => {
         const expectedResult = generateExpectedResult(triangleType, values);
         await trianglePage.inputSubmitCheck(values, expectedResult);
       });
@@ -227,8 +238,7 @@ test.describe("Negative test cases", () => {
     ];
 
     testCases.forEach(({ values, triangleType, description }) => {
-      test(description, async ({ page }) => {
-        const trianglePage = new TrianglePage(page);
+      test(description, async () => {
         const expectedResult = generateExpectedResult(
           triangleType,
           values,
@@ -260,8 +270,7 @@ test.describe("Negative test cases", () => {
     ];
 
     testCases.forEach(({ values, triangleType, description }) => {
-      test(description, async ({ page }) => {
-        const trianglePage = new TrianglePage(page);
+      test(description, async () => {
         const expectedResult = generateExpectedResult(triangleType, values);
         await trianglePage.inputSubmitCheck(values, expectedResult);
       });
@@ -304,8 +313,7 @@ test.describe("Negative test cases", () => {
     ];
 
     testCases.forEach(({ values, triangleType, description }) => {
-      test(description, async ({ page }) => {
-        const trianglePage = new TrianglePage(page);
+      test(description, async () => {
         const expectedResult = generateExpectedResult(
           triangleType,
           values,
@@ -352,8 +360,7 @@ test.describe("Negative test cases", () => {
     ];
 
     testCases.forEach(({ values, triangleType, description }) => {
-      test(description, async ({ page }) => {
-        const trianglePage = new TrianglePage(page);
+      test(description, async () => {
         const expectedResult = generateExpectedResult(
           triangleType,
           values,
@@ -364,16 +371,3 @@ test.describe("Negative test cases", () => {
     });
   });
 });
-
-// TODO: this is how describes should look like
-// test.describe(('new describe', () => {
-//     let model: TrianglePage
-//     test.beforeEach(({ page}) => {
-//         model = new TrianglePage(page)
-//         model.goto()
-//     })
-
-//     test('test1', () => {
-//         model
-//     })
-// }))
