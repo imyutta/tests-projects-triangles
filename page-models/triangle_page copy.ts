@@ -55,7 +55,6 @@ export class TrianglePage {
     return this.result.textContent();
   }
 
-  // TODO move to POM
   async inputSubmitCheck(values: (string | number)[], expectedResult: string) {
     await this.goto();
     await this.fillInputs(values);

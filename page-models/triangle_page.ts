@@ -1,3 +1,5 @@
+// @ts-check
+
 import { Page, Locator, expect } from "@playwright/test";
 
 export class TrianglePage {
@@ -55,18 +57,19 @@ export class TrianglePage {
     return this.result.textContent();
   }
 
-  // TODO move to POM
+  // TODO check if UI shows text as error (e.g. check class or text color)
+  async responseIsError(): Promise<boolean> {
+    return false;
+  }
+
+  // TODO function should check if text is error text or not
   async inputSubmitCheck(values: (string | number)[], expectedResult: string) {
+    // todo move goto to beforeEach
     await this.goto();
     await this.fillInputs(values);
     await this.submitForm();
     const actualResult = await this.getResultText();
 
     expect(actualResult).toBe(expectedResult);
-  }
-
-  // TODO placeholder for gigifunction
-  async check(values, expectedResult, ...rest) {
-    // do everything: fillall, submit, check
   }
 }
