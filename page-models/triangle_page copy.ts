@@ -21,7 +21,8 @@ export class TrianglePage {
 
   async goto() {
     await this.page.goto("https://playground.learnqa.ru/puzzle/triangle");
-    // TODO: Without this hack the test will not work
+    // TODO: Wait for 1 second to ensure the page loads completely And the 'Submit' button is active.
+    // This is a temporary measure to avoid test failures due to timing issues.
     await this.page.waitForTimeout(1000);
   }
 
